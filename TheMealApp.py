@@ -291,12 +291,12 @@ class searchGUI(): # Handles the search frame GUI and function.
         # [WIDGETS & ELEMENTS]
         self.label = ctk.CTkLabel(parent, text="TheMeal Python API", text_color="white", font=h1, fg_color=maincolor)
         self.entry = ctk.CTkEntry(parent, placeholder_text="Search", corner_radius=0, fg_color="white", text_color="black", font=p)
-        self.options = ctk.CTkOptionMenu( parent, corner_radius=0, fg_color=accentcolor, button_color=accentcolor, button_hover_color=accentcolor, values=self.options,text_color="white", font=bold)
+        self.optionsmenu = ctk.CTkOptionMenu( parent, corner_radius=0, fg_color=accentcolor, button_color=accentcolor, button_hover_color=accentcolor, values=self.options,text_color="white", font=bold)
 
         # [GRID LAYOUT]
         self.label.grid(row=0, column=0, sticky="w")
         self.entry.grid(row=0, column=1, columnspan=3, sticky="ew")
-        self.options.grid(row=0, column=6, sticky="e")
+        self.optionsmenu.grid(row=0, column=6, sticky="e")
 
         # [ELEMENT BINDINGS]
         self.entry.bind("<Return>", self.searchfunction) # If Enter is pressed, call the search function.
