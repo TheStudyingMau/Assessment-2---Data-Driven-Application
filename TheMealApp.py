@@ -69,12 +69,12 @@ class ErrorDisplay(): # Responsible for informing user their error for searchGUI
 ##################################
 
 class MealDBClient(): # Responsible for acquiring API data.
-    baseurl = "https://www.themealdb.com/api/json/v1/1/" # Base URL for API requests.
+    __baseurl = "https://www.themealdb.com/api/json/v1/1/" # Base URL for API requests.
 
     # [SEARCH METHODS ]
     
     def searchName(self,name): # Searches meal by name.
-        url = f"{self.baseurl}search.php?s={name}" # Modifies the url
+        url = f"{self.__baseurl}search.php?s={name}" # Modifies the url
         response = None # Response is initially none prepared for the exception handling if API is not functioning.
 
         try:
@@ -87,7 +87,7 @@ class MealDBClient(): # Responsible for acquiring API data.
             return None
     
     def searchFirstLetter(self, letter): # Searches meal by first letter.
-        url = f"{self.baseurl}search.php?f={letter}"
+        url = f"{self.__baseurl}search.php?f={letter}"
         response = None
 
         try:
@@ -100,7 +100,7 @@ class MealDBClient(): # Responsible for acquiring API data.
             return None
 
     def searchID(self,id): # Searches meal by ID.
-        url = f"{self.baseurl}lookup.php?i={id}"
+        url = f"{self.__baseurl}lookup.php?i={id}"
         response = None
 
         try:
