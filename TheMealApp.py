@@ -372,7 +372,7 @@ class searchGUI(): # Handles the search frame GUI and function.
 
 class MainAppGUI(ctk.CTk): # Handles the main GUI elements.
     def __init__(self): # Initializes the GUI class
-        super().__init__() # Redefines the __init__ from its parent class "ctk.CTK".
+        super().__init__() # "ctk.CTK" class is initialized to make the class into a customtkinter window.
 
         # [WINDOW CUSTOMIZATION]
         self.geometry("1200x600") # Window Size
