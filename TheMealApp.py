@@ -311,7 +311,7 @@ class searchGUI(): # Handles the search frame GUI and function.
             return # 'Return' ends the method.
         
         else:
-            if self.options.get() == 'Name': # If the option selected is "Name"
+            if self.optionsmenu.get() == 'Name': # If the option selected is "Name"
 
                 if len(search) == 1: # If the search is only 1 letter, use first letter search.
                     clearwidgets() # Clean both displays.
