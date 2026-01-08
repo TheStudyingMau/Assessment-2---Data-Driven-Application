@@ -337,7 +337,7 @@ class searchGUI(): # Handles the search frame GUI and function.
                     SYS.invalidinput() # Informs the user of their error.
                     return # Ends the method.
 
-                if len(search) < 5: # If the numbers are under 5 digits
+                elif len(search) < 5: # If the numbers are under 5 digits
                     clearwidgets() # Clean both displays.
                     SYS.insufficientinput() # Informs the user of their error.
                     return # Ends the method.
