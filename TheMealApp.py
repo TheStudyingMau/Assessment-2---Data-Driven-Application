@@ -61,6 +61,11 @@ class ErrorDisplay(): # Responsible for informing user their error for searchGUI
         self.label.configure(text="[!]: Insufficient ID Input.")
         self.label.grid(row=2, column=0, sticky="nsew", pady=50)
 
+    def oversufficientinput(self): # Method that displays 'Oversufficient Input.'
+        self.label = ctk.CTkLabel(GUI.display1, text="", font=p) # Label is constructed.
+        self.label.configure(text="[!]: Oversufficient ID Input.")
+        self.label.grid(row=2, column=0, sticky="nsew", pady=50)
+
     def emptyinput(self): # Method that displays 'Empty Input.'
         self.label = ctk.CTkLabel(GUI.display1, text="", font=p) # Label is constructed.
         self.label.configure(text="[!]: Empty Input. Please try again.")
@@ -330,7 +335,7 @@ class searchGUI(): # Handles the search frame GUI and function.
 
                 self.loadcards(meals) # If there is a meal, calls the "loadcards" function to display the meals.
                     
-            if self.options.get() == 'ID': # If the option selected is "ID"
+            if self.optionsmenu.get() == 'ID': # If the option selected is "ID"
                 
                 if search.isdigit() == False: # Checks if the ID input was a string input.
                     clearwidgets() # Clean both displays.
@@ -342,7 +347,12 @@ class searchGUI(): # Handles the search frame GUI and function.
                     SYS.insufficientinput() # Informs the user of their error.
                     return # Ends the method.
 
-                else: # If numbers are exactly 5 digits.
+                elif len(search) > 5: # IF the numbes are more than 5 digits.
+                    clearwidgets() # Clean both displays.
+                    SYS.oversufficientinput() # Informs the user of their error.
+                    return # Ends the method.
+
+                else: # If numbers are 5 digits or more.
                     clearwidgets() # Clean both displays. 
                     data = API.searchID(search) # API is used for search.
 
