@@ -158,7 +158,7 @@ class contentGUI(): # Handles the display frame GUI elements and function.
     def __init__(self, meal, parent, iteration=0): # Initializes the display GUI class.
        
        # [VARIABLES]
-       placeholder = Image.new('RGB', (250, 250), color = 'gray') # Creates a placeholder gray image if the request fails.
+       self.placeholder = Image.new('RGB', (250, 250), color = 'gray') # Creates a placeholder gray image if the request fails.
 
        self.textsplit = meal.instructions.replace('\r\n', ' ').replace('\n', ' ') # Replaces new lines with spaces.
        self.text = self.textsplit if len(self.textsplit) < 300 else self.textsplit[:300] + "..."  # Limits the text to 500 characters using short-term if-else condition
@@ -172,7 +172,7 @@ class contentGUI(): # Handles the display frame GUI elements and function.
        self.info = ctk.CTkFrame(self.description, fg_color=maincolor, corner_radius=10) # Info Frame
 
        # [WIDGETS]
-       self.img = ctk.CTkImage(placeholder, size=imagesmall) # The image is then converted and stored
+       self.img = ctk.CTkImage(self.placeholder, size=imagesmall) # The image is then converted and stored
        self.label = ctk.CTkLabel(self.card, image=self.img, text="") # Label to hold the image.
        self.title = ctk.CTkLabel(self.h1frame, text=meal.name, text_color="white", font=h1, wraplength=400, justify="left") # Label to hold the description text.
        self.id = ctk.CTkLabel(self.info, text=f"ID: {meal.id}", text_color="white", font=bold) # Label to hold the meal ID.
@@ -212,7 +212,7 @@ class contentGUI(): # Handles the display frame GUI elements and function.
         cleardisplay2()
 
         # [VARIABLES]
-        self.tkimg = ctk.CTkImage(self.img, size=imagelarge)
+        self.tkimg = ctk.CTkImage(self.placeholder, size=imagelarge)
 
         # [WIDGETS]
 
@@ -264,11 +264,12 @@ class contentGUI(): # Handles the display frame GUI elements and function.
         def worker(): # A worker thread to handle the image loading.
             try: 
                 response = requests.get(url) # The nested worker method  tries to get the image based on the provided url.
-                self.img = Image.open(BytesIO(response.content)) # This opens the image from the URL into a readable file.
+                self.placeholder = Image.open(BytesIO(response.content)) # This opens the image from the URL into a readable file.
+                
             except: 
-                self.img = Image.new('RGB', (250, 250), 'gray') # Placeholder stays gray if loading fails.
+                self.placeholder = Image.new('RGB', (250, 250), 'gray') # Placeholder stays gray if loading fails.
 
-            GUI.after(0, lambda: callback(self.img)) # Calls the callback on the main thread.
+            GUI.after(0, lambda: callback(self.placeholder)) # Calls the callback on the main thread.
 
         threading.Thread(target=worker, daemon=True).start() # Starts the worker thread.
         
