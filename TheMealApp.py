@@ -220,7 +220,7 @@ class contentGUI(): # Handles the display frame GUI elements and function.
             line = f" {i}\n" # Stores the line without the comma.
             self.listofingredients += line # Adds it to display the list
 
-        # [VIEW MEAL DATA GUI]
+        # [VIEW MEAL DATA WIDGETS]
         label = ctk.CTkLabel(GUI.display2, image=self.tkimg, text="")
         src = ctk.CTkLabel(GUI.display2, text=meal.source, wraplength=350)
         youtube = ctk.CTkButton(GUI.display2, height=35, text="Watch Tutorial", fg_color=accentcolor, font=bold, command=lambda: self.openyoutube(meal), hover_color=darkaccent)
@@ -237,7 +237,7 @@ class contentGUI(): # Handles the display frame GUI elements and function.
         creativecommons = ctk.CTkLabel(GUI.display2, text=f"Creative Commons: {meal.cc}", font=large, wraplength=350)
         datemod = ctk.CTkLabel(GUI.display2, text=f"Date Modified: {meal.datemodified}", font=large, wraplength=350)
             
-        # [GRID: WIDGETS]
+        # [GRID]
         label.grid(row=0, column=0, sticky="nsew", pady=(0,5))
         src.grid(row=1, column=0)
         youtube.grid(row=2, column=0, sticky="ew", pady=5)
