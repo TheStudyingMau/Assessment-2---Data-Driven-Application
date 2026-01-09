@@ -171,7 +171,7 @@ class contentGUI(): # Handles the display frame GUI elements and function.
        self.h1frame = ctk.CTkFrame(self.description, fg_color=maincolor, corner_radius=10) # H1 Frame
        self.info = ctk.CTkFrame(self.description, fg_color=maincolor, corner_radius=10) # Info Frame
 
-       # [WIDGETS & ELEMENTS]
+       # [WIDGETS]
        self.img = ctk.CTkImage(placeholder, size=imagesmall) # The image is then converted and stored
        self.label = ctk.CTkLabel(self.card, image=self.img, text="") # Label to hold the image.
        self.title = ctk.CTkLabel(self.h1frame, text=meal.name, text_color="white", font=h1, wraplength=400, justify="left") # Label to hold the description text.
@@ -218,7 +218,7 @@ class contentGUI(): # Handles the display frame GUI elements and function.
         except: # If there are exceptions, creates an colored image as placeholder.
             self.tkimg = ctk.CTkImage(Image.new('RGB', (500, 500), color = 'gray'), size=imagelarge)
 
-        # [WIDGETS & ELEMENTS]
+        # [WIDGETS]
 
         for i in meal.ingredients: # For every ingredient in the meal data.
             if len(meal.ingredients) > 1: # If the amount of meals are more than one.
@@ -245,7 +245,7 @@ class contentGUI(): # Handles the display frame GUI elements and function.
         creativecommons = ctk.CTkLabel(GUI.display2, text=f"Creative Commons: {meal.cc}", font=large, wraplength=350)
         datemod = ctk.CTkLabel(GUI.display2, text=f"Date Modified: {meal.datemodified}", font=large, wraplength=350)
             
-        # [GRID: WIDGETS & ELEMENTS]
+        # [GRID: WIDGETS]
         label.grid(row=0, column=0, sticky="nsew", pady=(0,5))
         src.grid(row=1, column=0)
         youtube.grid(row=2, column=0, sticky="ew", pady=5)
@@ -293,7 +293,7 @@ class searchGUI(): # Handles the search frame GUI and function.
         # [VARIABLES]
         self.options = ['Name', 'ID'] # List of options for your search.
 
-        # [WIDGETS & ELEMENTS]
+        # [WIDGETS]
         self.label = ctk.CTkLabel(parent, text="TheMeal Python API", text_color="white", font=h1, fg_color=maincolor)
         self.entry = ctk.CTkEntry(parent, placeholder_text="Search", corner_radius=0, fg_color="white", text_color="black", font=p)
         self.optionsmenu = ctk.CTkOptionMenu( parent, corner_radius=0, fg_color=accentcolor, button_color=accentcolor, button_hover_color=accentcolor, values=self.options,text_color="white", font=bold)
