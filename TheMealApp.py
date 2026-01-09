@@ -217,11 +217,7 @@ class contentGUI(): # Handles the display frame GUI elements and function.
         # [WIDGETS]
 
         for i in meal.ingredients: # For every ingredient in the meal data.
-            if len(meal.ingredients) > 1: # If the amount of meals are more than one.
-                line = f" {i}\n" # Stores the line with the comma. (sugggesting more than one ingredients)
-            else:
-                line = f" {i}\n" # Stores the line without the comma.
-
+            line = f" {i}\n" # Stores the line without the comma.
             self.listofingredients += line # Adds it to display the list
 
         # [VIEW MEAL DATA GUI]
