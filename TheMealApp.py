@@ -211,12 +211,8 @@ class contentGUI(): # Handles the display frame GUI elements and function.
         
         cleardisplay2()
 
-        # [IMAGE HANDLING]
-
-        try: # Attempts to construct the acquired image.
-            self.tkimg = ctk.CTkImage(self.img, size=imagelarge)
-        except: # If there are exceptions, creates an colored image as placeholder.
-            self.tkimg = ctk.CTkImage(Image.new('RGB', (500, 500), color = 'gray'), size=imagelarge)
+        # [VARIABLES]
+        self.tkimg = ctk.CTkImage(self.img, size=imagelarge)
 
         # [WIDGETS]
 
@@ -281,7 +277,7 @@ class contentGUI(): # Handles the display frame GUI elements and function.
         threading.Thread(target=worker, daemon=True).start() # Starts the worker thread.
         
     def update_image(self, img): # Method that updates the image in the label once loaded.
-        tk_img = ctk.CTkImage(img, size=imagesmall) # After BytesIO makes the file readable for PIL, PIL is used to display the image.
+        tk_img = ctk.CTkImage(img, size=imagesmall) # After BytesIO makes the file readable, CTk is used to display the image.
         self.label.configure(image=tk_img) # Image is replaced from its placeholder to its actual.
         self.label.image = tk_img 
 
